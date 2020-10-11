@@ -1,0 +1,30 @@
+<html lang="en">
+<head>
+    <% include ../helpers/head %>
+</head>
+
+<body>
+  <!-- the classes 'page-header' and 'btn btn-dark' create bootstrap components.  -->
+  <!-- Check out more components here: http://getbootstrap.com/components/ -->
+  <div class="page-header">
+    <% include ../helpers/navbar %>
+  
+    <h1>Hello Fucking World</h1>
+  </div>
+
+<button onclick="handleSignIn()">Login</button>
+
+<form onSubmit="handleMessageFromSubmit()" action="#">
+  Title:<br>
+  <input id="post-title"><br>
+  Body:<br>
+  <textarea id="post-body"></textarea><br>
+  <button>Submit</button>
+
+</form>
+
+<div id="post-listing"></div>
+
+</body>
+
+</html>
