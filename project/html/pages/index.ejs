@@ -1,6 +1,7 @@
 <html lang="en">
+
 <head>
-    <% include ../helpers/head %>
+  <% include ../helpers/head %>
 </head>
 
 <body>
@@ -8,22 +9,16 @@
   <!-- Check out more components here: http://getbootstrap.com/components/ -->
   <div class="page-header">
     <% include ../helpers/navbar %>
-  
-    <h1>Hello Fucking World</h1>
+
+    <div class="title-container">
+      <h1>Day 62</h1>
+      <p>Week 10: <span>Finalizing</span></p>
+    </div>
   </div>
 
-<button onclick="handleSignIn()">Login</button>
-
-<form onSubmit="handleMessageFromSubmit()" action="#">
-  Title:<br>
-  <input id="post-title"><br>
-  Body:<br>
-  <textarea id="post-body"></textarea><br>
-  <button>Submit</button>
-
-</form>
-
-<div id="post-listing"></div>
+  <div id="loginBtn">
+    <button onclick="handleSignIn()" class="mx-auto">Login</button>
+  </div>
 
 </body>
 
