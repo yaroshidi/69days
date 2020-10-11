@@ -3,7 +3,6 @@ $(document).ready(function(){
 })
 
 
-
 function handleSignIn() {
   var provider = new firebase.auth.GoogleAuthProvider();
 

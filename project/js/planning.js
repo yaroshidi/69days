@@ -18,7 +18,7 @@ function todoMain() {
 
 
     getElements();
-    addListeners();
+    // addListeners();
     initCalendar();
     load();
     renderRows(todoList);
@@ -40,20 +40,20 @@ function todoMain() {
     }
 
     // This is changing the display
-    function addListeners() {
-        addBtn.addEventListener("click", addEntry, false);
-        sortBtn.addEventListener("click", sortEntry, false);
-        selectElem.addEventListener("change", multipleFilter, false);
-        shortlistBtn.addEventListener("change", multipleFilter, false);
+    // function addListeners() {
+    //     addBtn.addEventListener("click", addEntry, false);
+    //     sortBtn.addEventListener("click", sortEntry, false);
+    //     selectElem.addEventListener("change", multipleFilter, false);
+    //     shortlistBtn.addEventListener("change", multipleFilter, false);
 
-        document.getElementById("todo-modal-close-btn").addEventListener("click", closeEditModalBox, false);
+    //     document.getElementById("todo-modal-close-btn").addEventListener("click", closeEditModalBox, false);
 
-        changeBtn.addEventListener("click", commitEdit, false);
+    //     changeBtn.addEventListener("click", commitEdit, false);
 
-        todoTable.addEventListener("dragstart", onDragStart, false);
-        todoTable.addEventListener("drop", onDrop, false);
-        todoTable.addEventListener("dragover", onDragover, false);
-    }
+    //     todoTable.addEventListener("dragstart", onDragStart, false);
+    //     todoTable.addEventListener("drop", onDrop, false);
+    //     todoTable.addEventListener("dragover", onDragover, false);
+    // }
 
     // This is what happens when you click add
     function addEntry(event) {
