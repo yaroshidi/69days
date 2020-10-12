@@ -16,15 +16,15 @@ app.get('/', function(request, response) {
   response.render('pages/index');
 });
 
-app.get('/about', function(request, response) {
-  response.render('pages/about');
+app.get('/calendar', function(request, response) {
+  response.render('pages/calendar');
 });
 
-app.get('/project', function(request, response) {
-  response.render('pages/project');
+app.get('/notes', function(request, response) {
+  response.render('pages/notes');
 });
-app.get('/Todo', function(request, response) {
-  response.render('pages/Todo');
+app.get('/todo', function(request, response) {
+  response.render('pages/todo');
 });
 
 app.listen(app.get('port'), function() {

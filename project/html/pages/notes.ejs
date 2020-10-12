@@ -1,6 +1,7 @@
 <html lang="en">
+
 <head>
-    <% include ../helpers/head %>
+  <% include ../helpers/head %>
 </head>
 
 <body>
@@ -10,17 +11,24 @@
     <% include ../helpers/navbar %>
 
     <div class="title-container">
-      <h1>Calendar</h1>
+      <h1>Notes</h1>
       <p>Week 10: <span>Finalizing</span></p>
     </div>
   </div>
 
-  <p>Click on the button for a surprise.</p>
+  <form onSubmit="handleMessageFromSubmit()" action="#">
+    Title:
+    <br>
+    <input id="post-title">
+    <br>
+    Body:
+    <br>
+    <textarea id="post-body"></textarea><br>
+    <button>Submit</button>
 
-  <button onClick="showPicture()" class="btn btn-dark">Click me</button>
+  </form>
 
-  <div id="image"></div>
-  
+  <div id="post-listing"></div>
 </body>
 
 </html>
