@@ -93,3 +93,260 @@ h1 {
     display: flex;
     justify-content: space-evenly;
 }
+
+form {
+    min-height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form input, form button {
+    padding: 0.5rem;
+    font-size: 1.5rem;
+    border: none;
+    background: white;
+    max-height: 40px;
+}
+
+form button{
+    color: #d88771;
+    background: white; 
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+form button:hover{
+    background: #d88771;
+    color: white;
+}
+
+.task-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.task-list{
+    min-width: 30%;
+    list-style: none;
+}
+
+.task {
+    margin: 0.5rem;
+    background: white;
+    color: black;
+    font-size: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.5s ease-in-out ;
+}
+
+.task li{
+    flex: 1;
+}
+
+.trash-btn, .complete-btn {
+    background: #ff6f47;
+    color: white;
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.complete-btn{
+    background: rgb(36, 190, 36);
+}
+
+.task-item{
+    padding: 0rem 0.5rem;
+}
+
+.fa-trash, 
+.fa-check {
+    pointer-events: none;
+}
+
+.completed {
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
+.fall {
+    transform: translateY(8rem) rotateZ(20deg);
+    opacity: 0;
+}
+
+
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    outline: 0;
+    box-shadow: none;
+    border: 0 !important;
+    background-image: none;
+
+}
+.select {
+    margin: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+select {
+    color: #ff6f47;
+    width: 10rem;
+    cursor: pointer;
+    padding: 1rem;
+}
+
+.select::after {
+    content: "\25BC";
+    position: absolute;
+    background: #ff6f47;
+    top: 0;
+    right: 0;
+    padding: 0.9rem;
+    pointer-events: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.select:hover::after {
+    background: white;
+    color: #ff6f47;
+}
+
+.strike {
+    text-decoration: line-through;
+}
+
+td{
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.todo-input {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 0.2rem;
+}
+
+#todoTable{
+    margin-top: 1rem;
+}
+
+.todo-block {
+    border: 1px solid rgba(139, 78, 63, 0.3);
+    padding: 1rem;
+    border-radius: 20px;
+}
+
+::placeholder{
+    color: rgba(139, 78, 63, 0.3);
+}
+
+::-ms-input-placeholder {
+    color: rgba(139, 78, 63, 0.5);
+}
+
+::-webkit-input-placeholder {
+    color: rgba(139, 78, 63, 0.3);
+}
+
+input {
+    color: rgb(59, 27, 19);
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: rgb(59, 27, 19);
+    /* background-color: rgba(105, 0, 169, 0.09); */
+    background: linear-gradient(180deg, rgba(226, 216, 226, 0.21) 52.6%, rgba(105, 0, 169, 0.09) 70.71%);
+}
+
+
+@media screen and (max-width: 767px) {
+    /* for mobile and other smaller screen*/
+    .todoTable{
+        margin-top: 1rem;
+        width: 100%;
+    }
+
+    #calendar {
+        margin-top: 1rem;
+        height: 100%;
+
+    }
+
+
+}
+
+
+@media screen and (min-width: 768px){
+/* this is for tablet and desktop */
+
+    .todo-grid-parent {
+        display: grid;
+        width: 40%;
+        grid-template-columns: 2fr 3fr;
+        column-gap: 1rem;
+    }
+
+    #calendar{
+        position: sticky;
+        top: 1rem;
+        height: 100%;
+    }
+
+}
+
+.todo-overlay {
+    width: 100vw;
+    height: 100vh;
+    background-color: #ddd;
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 0.95;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-100vw);
+    transition: transform 400ms;
+    z-index: 2;
+}
+
+.todo-modal {
+    min-width: 50vw;
+    height: 50vh;
+    background-color: #ffd6cc;
+}
+
+.todo-modal-close-btn {
+    background-color: red;
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: white;
+    font-weight: bold;
+}
+
+.slideIntoView {
+    transform: translateX(0);
+    transition: transform 655ms;
+}
+
+#todoTable tr:nth-child(even) {
+    background-color: #ffd6cc;
+}

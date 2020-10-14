@@ -16,7 +16,7 @@
     </div>
   </div>
 
-  <div class="notes-page-container">
+  <!-- <div class="notes-page-container">
     <form onSubmit="handleMessageFromSubmit()" action="#">
       Title:
       <br>
@@ -30,7 +30,50 @@
     </form>
 
     <div id="post-listing"></div>
+  </div> -->
+
+  <!-- Firebase blog (from tutorial) -->
+
+  <!-- this is the toggler button, it shouldn't be linked to any navbar-->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+    aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <!-- this is what will appear when you press the button -->
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="index.ejs">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Create</a>
+      </li>
+    </ul>
   </div>
+
+  <main role="main">
+    <!-- wtf is Jumbotron -->
+    <div class="jumbotron">
+      <div class="jumbotron-container">
+        <h1 class="display-3 pt-4">Here are the notes</h1>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+          Consequuntur similique doloribus cumque provident quam laboriosam consequatur
+          hic nulla veritatis ex sit laborum obcaecati blanditiis quisquam quod repellat, d
+          ucimus saepe. Ad!</p>
+        <p>
+          <a href="#" class="btn btn-primary btn-lg">Learn more &raquo;</a>
+        </p>
+      </div>
+    </div>
+
+
+  <div class="container">
+    <div class="row" id="posts-collection">
+      <hr />
+    </div>
+  </div>
+</main>
+
 
 </body>
 

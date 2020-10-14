@@ -1,0 +1,38 @@
+<html lang="en">
+
+<head>
+    <% include ../helpers/head %>
+</head>
+
+<body>
+
+    <div class="page-header">
+        <% include ../helpers/navbar %>
+
+        <div class="title-container">
+            <h1>Tasks</h1>
+            <p>Week 10: <span>Finalizing</span></p>
+        </div>
+    </div>
+
+    <form>
+        <input type="text" class="task-input">
+        <button class="task-button" type="submit">
+            <i class="fas fa-plus-square"></i>
+        </button>
+        <div class="select">
+            <select name="tasks" class="filter-task">
+                <option value="all">All</option>
+                <option value="completed">Completed</option>
+                <option value="uncompleted">Pending</option>
+            </select>
+        </div>
+    </form>
+    <div class="task-container">
+        <ul class="task-list"></ul>
+    </div>
+
+
+</body>
+
+</html>
