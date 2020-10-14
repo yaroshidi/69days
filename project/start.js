@@ -23,8 +23,8 @@ app.get('/calendar', function(request, response) {
 app.get('/notes', function(request, response) {
   response.render('pages/notes');
 });
-app.get('/todo', function(request, response) {
-  response.render('pages/todo');
+app.get('/tasks', function(request, response) {
+  response.render('pages/tasks');
 });
 
 app.listen(app.get('port'), function() {
