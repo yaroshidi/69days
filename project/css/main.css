@@ -226,7 +226,7 @@ select {
 }
 
 td{
-    border: 1px solid black;
+    border: 1px solid rgba(0, 0, 0, 0.05);
     padding: 5px;
 }
 
@@ -234,16 +234,24 @@ td{
     display: grid;
     grid-template-columns: 1fr 1fr;
     row-gap: 0.2rem;
+    width: 50%;
+    margin-top: 1rem;
+
 }
 
 #todoTable{
     margin-top: 1rem;
+    width: 50%;
+    border-radius: 20px;
 }
+
+
 
 .todo-block {
     border: 1px solid rgba(139, 78, 63, 0.3);
     padding: 1rem;
     border-radius: 20px;
+    
 }
 
 ::placeholder{
@@ -277,11 +285,11 @@ body {
         width: 100%;
     }
 
-    #calendar {
+    /* #calendar {
         margin-top: 1rem;
         height: 100%;
 
-    }
+    } */
 
 
 }
@@ -291,24 +299,24 @@ body {
 /* this is for tablet and desktop */
 
     .todo-grid-parent {
-        display: grid;
-        width: 40%;
+        display: flex;
+        justify-content: space-between;
         grid-template-columns: 2fr 3fr;
         column-gap: 1rem;
     }
 
-    #calendar{
+    /* #calendar{
         position: sticky;
         top: 1rem;
         height: 100%;
-    }
+    } */
 
 }
 
 .todo-overlay {
     width: 100vw;
     height: 100vh;
-    background-color: #ddd;
+    background-color: none;
     position: fixed;
     top: 0;
     left: 0;
@@ -322,24 +330,20 @@ body {
 }
 
 .todo-modal {
-    min-width: 50vw;
-    height: 50vh;
+    min-width: 30vw;
+    height: 30vh;
     background-color: #ffd6cc;
 }
 
 .todo-modal-close-btn {
-    background-color: red;
-    position: absolute;
-    top: 2rem;
-    right: 2rem;
-    width: 2rem;
-    height: 2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
+    background-color: rgba(97, 13, 13, 0.493);
+    color: rgba(59, 27, 19, 0.137);
+    border-radius: 5px;
     color: white;
     font-weight: bold;
+}
+.todo-buttons {
+    display:flex;
 }
 
 .slideIntoView {
@@ -350,3 +354,4 @@ body {
 #todoTable tr:nth-child(even) {
     background-color: #ffd6cc;
 }
+
