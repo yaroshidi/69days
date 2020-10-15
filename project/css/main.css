@@ -303,6 +303,8 @@ body {
         justify-content: space-between;
         grid-template-columns: 2fr 3fr;
         column-gap: 1rem;
+        padding-left: 5rem;;
+        padding-right: 5rem;
     }
 
     /* #calendar{
@@ -355,3 +357,7 @@ body {
     background-color: #ffd6cc;
 }
 
+.home-container {
+    padding-left: 5rem;;
+    padding-right: 5rem;
+}

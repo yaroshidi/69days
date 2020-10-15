@@ -1,5 +1,27 @@
 
 
+$(function(){
+    if($('body').is('#homeBody')){
+        handleSignIn();
+        dashboard();
+    }
+  });
+$(function(){
+    if($('body').is('#planningBody')){
+        todoMain();
+    }
+  });
+$(function(){
+    if($('body').is('#notesBody')){
+        notesMain();
+    }
+  });
+$(function(){
+    if($('body').is('#tasksBody')){
+        taskPlanning();
+    }
+  });
+
 // This is in regards to the sign in method. Only google works for now.
 function handleSignIn() {
     var provider = new firebase.auth.GoogleAuthProvider();
@@ -22,14 +44,15 @@ function handleSignIn() {
     });
 }
 
-// This is the NEW notes feature
-let postCollection = document.querySelector("#posts-collection")
+function notesMain() {
+    // This is the NEW notes feature
+let notesCollection = document.querySelector("#posts-collection")
 
 const db = firebase.firestore();
 
-function createPost(title, time, content) {
+function createNote(title, time, content) {
     let div = document.createElement('div');
-    div.setAttribute('class', 'cold-md-4');
+    div.setAttribute('class', 'col-md-4');
 
     let h2 = document.createElement('h2');
     let p = document.createElement('p');
@@ -43,17 +66,17 @@ function createPost(title, time, content) {
     div.appendChild(small);
     div.appendChild(p);
 
-    postCollection.appendChild(div);
+    notesCollection.appendChild(div);
 }
 
 // Get posts (This is defined previous in commented code)
-function getPosts() {
+function getNotes() {
     db.collection("notes").get().then(snapshot => {
         snapshot.docs.forEach(docs => {
-            createPost(
-                docs.data().postName,
+            createNote(
+                docs.data().noteName,
                 docs.data().createdAt,
-                docs.data().postContnent
+                docs.data().noteContent
             )
         });
     }).catch(err => {
@@ -61,14 +84,34 @@ function getPosts() {
     });
 }
 
-getPosts();
-todoMain();
+getNotes();
 
+document.querySelector('#submitBtn').addEventListener('click', 
+function submittingNote() {
+    let noteAuthor = document.querySelector('#author').value;
+    let noteTitle = document.querySelector('#noteTitle').value;
+    let noteContent = document.querySelector('#noteContent').value;
+    let noteDate = document.querySelector('#noteDate').value;
 
-todoPlanning();
+    if (
+        noteAuthor === '' ||
+        noteTitle === '' ||
+        noteContent === '' ||
+        noteDate === ''
+    ) {
+        alert('Fields Empty')
+    } else {
+        db.collection('notes').doc().set({
+            author: noteAuthor,
+            createdAt: noteDate,
+            noteName: noteTitle,
+            noteContent: noteContent
+        });
+    }
+});
+}
 
-
-function todoPlanning() {
+function taskPlanning() {
     const taskInput = document.querySelector('.task-input');
     const taskButton = document.querySelector('.task-button');
     const taskList = document.querySelector('.task-list');
@@ -215,9 +258,6 @@ function todoPlanning() {
 
 }
 
-
-
-
 function todoMain() {
     const DEFAULT_OPTION = "All categories";
 
@@ -229,7 +269,7 @@ function todoMain() {
         sortBtn,
         selectElem,
         todoList = [],
-        calendar,
+        // calendar,
         shortlistBtn,
         changeBtn,
         todoTable,
@@ -238,7 +278,7 @@ function todoMain() {
 
     getElements();
     addListeners();
-    initCalendar();
+    // initCalendar();
     load();
     renderRows(todoList);
     updateSelectOptions();
@@ -452,7 +492,7 @@ function todoMain() {
             save();
 
             // remove from calendar
-            calendar.getEventById(this.dataset.id)//.remove();
+            // calendar.getEventById(this.dataset.id)//.remove();
 
         }
 
@@ -494,36 +534,36 @@ function todoMain() {
         renderRows(todoList);
     }
 
-    function initCalendar() {
-        var calendarEl = document.getElementById('calendar');
+    // function initCalendar() {
+    //     var calendarEl = document.getElementById('calendar');
 
-        calendar = new FullCalendar.Calendar(calendarEl, {
-            initialView: 'dayGridMonth',
-            initialDate: Date.now(),
-            headerToolbar: {
-                left: 'prev,next today',
-                center: 'title',
-                right: 'dayGridMonth,timeGridWeek,timeGridDay'
-            },
-            events: [],
+    //     calendar = new FullCalendar.Calendar(calendarEl, {
+    //         initialView: 'dayGridMonth',
+    //         initialDate: Date.now(),
+    //         headerToolbar: {
+    //             left: 'prev,next today',
+    //             center: 'title',
+    //             right: 'dayGridMonth,timeGridWeek,timeGridDay'
+    //         },
+    //         events: [],
 
-            eventClick: function (info) {
-                toEditItem(info.event);
-            },
-            eventBackgroundColor: "rgba(139, 78, 63, 1)",
-            eventBorderColor: "rgba(139, 78, 63, 1)",
-            editable: true,
-            eventDrop: function (info){
-                calendarEventDrag(info.event)
-            }
-        });
+    //         eventClick: function (info) {
+    //             toEditItem(info.event);
+    //         },
+    //         eventBackgroundColor: "rgba(139, 78, 63, 1)",
+    //         eventBorderColor: "rgba(139, 78, 63, 1)",
+    //         editable: true,
+    //         eventDrop: function (info){
+    //             calendarEventDrag(info.event)
+    //         }
+    //     });
 
-        calendar.render();
-    }
+    //     calendar.render();
+    // }
 
-    function addEvent(event) {
-        calendar.addEvent(event)
-    }
+    // function addEvent(event) {
+    //     calendar.addEvent(event)
+    // }
 
     function clearTable() {
         // empty the table but keeping the first row.
@@ -532,7 +572,7 @@ function todoMain() {
             trElems[i].remove();
         }
 
-        calendar.getEvents().forEach(event => event.remove());
+        // calendar.getEvents().forEach(event => event.remove());
     }
 
     function multipleFilter() {
@@ -603,7 +643,7 @@ function todoMain() {
             let type = event.target.parentNode.dataset.type;
 
             // Remove from calendar
-            calendar.getEventById(id).remove();
+            // calendar.getEventById(id).remove();
 
             todoList.forEach(todoObj => {
                 if (todoObj.id == id) {
@@ -656,7 +696,7 @@ function todoMain() {
         let time = document.getElementById("todo-edit-time").value;
 
         // Remove from calendar
-        calendar.getEventById(id)//.remove();
+        // calendar.getEventById(id)//.remove();
 
         for (let i = 0; i < todoList.length; i++) {
             if (todoList[i].id == id) {
@@ -787,34 +827,61 @@ function todoMain() {
         event.preventDefault();
     }
 
-    function calendarEventDrag(event){
-        let id = event.id;
-        let dateObj = new Date(event.start);
-        let year = dateObj.getFullYear();
-        let month = dateObj.getMonth() + 1;
-        let date = dateObj.getDate();
+    // function calendarEventDrag(event){
+    //     let id = event.id;
+    //     let dateObj = new Date(event.start);
+    //     let year = dateObj.getFullYear();
+    //     let month = dateObj.getMonth() + 1;
+    //     let date = dateObj.getDate();
 
-        let paddMonth = month.toString();
-        if (paddMonth.length < 2){
-            paddMonth = "0" + paddMonth;
+    //     let paddMonth = month.toString();
+    //     if (paddMonth.length < 2){
+    //         paddMonth = "0" + paddMonth;
+    //     }
+    //     let paddDate = date.toString();
+    //     if (paddDate.length < 2){
+    //         paddDate = "0" + paddDate;
+    //     }
+    //     let toStoreDate = `${year}-${paddMonth}-${paddDate}`;
+    //     console.log(toStoreDate);
+
+    //     todoList.forEach(todoObj => {
+    //         if(todoObj.id == id){
+    //             todoObj.date = toStoreDate;
+    //         }
+    //     });
+
+    //     save();
+
+    //     multipleFilter();
+    // }
+}
+
+function dashboard() {
+    var calendarMain = document.getElementById('calendar');
+
+    calendar = new FullCalendar.Calendar(calendarMain, {
+        initialView: 'timeGridDay',
+        initialDate: Date.now(),
+        headerToolbar: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'dayGridMonth,timeGridWeek,timeGridDay'
+        },
+        events: [],
+
+        eventClick: function (info) {
+            toEditItem(info.event);
+        },
+        eventBackgroundColor: "rgba(139, 78, 63, 1)",
+        eventBorderColor: "rgba(139, 78, 63, 1)",
+        editable: true,
+        eventDrop: function (info){
+            calendarEventDrag(info.event)
         }
-        let paddDate = date.toString();
-        if (paddDate.length < 2){
-            paddDate = "0" + paddDate;
-        }
-        let toStoreDate = `${year}-${paddMonth}-${paddDate}`;
-        console.log(toStoreDate);
+    });
 
-        todoList.forEach(todoObj => {
-            if(todoObj.id == id){
-                todoObj.date = toStoreDate;
-            }
-        });
-
-        save();
-
-        multipleFilter();
-    }
+    calendar.render();
 }
 
 
