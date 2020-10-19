@@ -22,6 +22,9 @@ $(function(){
     }
   });
 
+  const db = firebase.firestore();
+
+
 // This is in regards to the sign in method. Only google works for now.
 function handleSignIn() {
     var provider = new firebase.auth.GoogleAuthProvider();
@@ -47,8 +50,6 @@ function handleSignIn() {
 function notesMain() {
     // This is the NEW notes feature
 let notesCollection = document.querySelector("#posts-collection")
-
-const db = firebase.firestore();
 
 function createNote(title, time, content) {
     let div = document.createElement('div');
@@ -377,6 +378,16 @@ function todoMain() {
     function save() {
         let stringified = JSON.stringify(todoList);
         localStorage.setItem("todoList", stringified);
+
+        db.collection("notes").get().then(snapshot => {
+            snapshot.docs.forEach(docs => {
+                createNote(
+                    docs.data().noteName,
+                    docs.data().createdAt,
+                    docs.data().noteContent
+                )
+            })
+        });
     }
 
     function load() {
